@@ -4,13 +4,15 @@ If you try executing the code along with the YouTuber, then at some point in tim
 
 wsl --install
 
-This will take some time and then you will be asked to restart your computer/laptop. After the restart, open your Ubuntu terminal (remember, not WSL terminal) and give your first name in small letter case, and then give an easy password (Note: while entering, the password will not be visible). After that, a directory will be shown. Now, create a folder in Local disk D as "customer_satisfaction" and give that path in the Ubuntu terminal.
+This will take some time to install and then you will be asked to restart your computer/laptop. After the restart, open your Ubuntu terminal (remember to open the Ubuntu terminal and not WSL terminal), and give your first name in small letter case, and then give an easy password (Note: while entering, the password will not be visible). After that, a main directory will be shown. 
 
-For example, the Linux path should be like this: cd /mnt/d/customer_satisfaction
+Now, create a folder in Local disk D as "customer_satisfaction" and paste that path in the Ubuntu terminal.
 
-Now, copy or download all the files and folders from my repository in the Local D > customer_satisfaction folder. Also, for the dataset, you can either download it from the YouTuber's GitHub or directly download it from the Google Drive link present in the data folder. (I can't upload the 50Mb dataset as the maximum dataset can be uploaded up to 25Mb). Also, remember that, to use zenml, your python version should be greater than 3.7 and less than 3.9. Therefore, in the below commands, we will install and use python 3.9 version.
+For example, the path should be like this: cd /mnt/d/customer_satisfaction
 
-Once you are in the customer_satisfaction directory, run the below Ubuntu commands, one by one.
+Now, copy or download all the files and folders from my repository in the Local D > customer_satisfaction. Also, for the dataset, you can either download it from the YouTuber's GitHub or directly download it from the Google Drive link present in the data folder. (I can't upload the 50Mb dataset as the maximum dataset can be uploaded up to 25Mb). Also, remember that, to use zenml, your Python version should be greater than 3.7 and less than 3.10. Therefore, in the below commands, we will run and install everything required for zenml, mlflow and streamlit and also, install and use the python 3.9 version.
+
+Once you are in the customer_satisfaction directory (cd /mnt/d/customer_satisfaction), run the below Ubuntu commands, one by one.
 ______________________________________________________________________________________________
 
 sudo apt update
@@ -42,9 +44,9 @@ pip install zenml
 pip3 install zenml["server"]
 
 pip uninstall zenml
-
-pip install zenml["server"]
 ______________________________________________________________________________________________
+pip install zenml["server"]
+
 Now, when you run the above command, it will give you an error as below. 
 
 Installing collected packages: zenml
@@ -53,24 +55,25 @@ Installing collected packages: zenml
 Successfully installed zenml-0.52.0
 ______________________________________________________________________________________________
 
-So, you need to copy it and paste in the below command and run it.
+Therefore, you need to copy it and paste it in the below command and run it.
 
 export PATH="$PATH:/home/abdur/.local/bin"
-
+______________________________________________________________________________________________
 pip install zenml["server"] --no-warn-script-location
 ______________________________________________________________________________________________
 Now, from here the project starts. Run the below commands accordingly and see the outputs.
 
 zenml init
 ______________________________________________________________________________________________
-Now, you also need to change the data path in the run_pipeline.py and run_deployment.py files. So, change it to as below:
+Now, you also need to change the data path in the run_pipeline.py and run_deployment.py files. So, change it as shown below:
 ______________________________________________________________________________________________
+Eg: run_pipeline.py
+
 from pipelines.train_pipeline import train_pipeline
 
 if _name_ == "_main_":
     train_pipeline(data_path="/mnt/d/customer_satisfaction/data/olist_customers_dataset.csv")
 ______________________________________________________________________________________________
-
 Now, run the below commands.
 ______________________________________________________________________________________________
 python3.9 run_pipeline.py
@@ -90,11 +93,10 @@ zenml model-deployer register mlflow --flavor=mlflow
 zenml stack register mlflow_stack -a default -o default -d mlflow -e mlflow_tracker --set
 
 zenml stack describe
-
-python3.9 run_pipeline.py
 ______________________________________________________________________________________________
+python3.9 run_pipeline.py
 
-Now, when the above command, you will get a file path, immediately below the above command. So, copy that, and paste in the below command and run it.
+Now, when run the above command, you will immediately get a file path below the above command. So, copy that, paste it into the below command, and run it.
 
 mlflow ui --backend-store-uri "file path obtained from python3.9 run_pipeline.py command"
 
@@ -110,8 +112,15 @@ python3.9 run_deployment.py --config predict
 pip install streamlit
 
 streamlit run streamlit_app.py
-
 ______________________________________________________________________________________________
+Also, you can also visualize zenml and mlflow dashboards by running zenml up and the mlflow link obtained when you run the commands. 
+
+That's all. Hope it works for you. 
+
+For any help, contact me at my email: abdurahman.5july@gmail.com
+
+Thank you
+
 
 
 
