@@ -11,6 +11,7 @@ For example, the Linux path should be like this: cd /mnt/d/customer_satisfaction
 Now, copy or download all the files and folders from my repository in the Local D > customer_satisfaction folder. Also, for the dataset, you can either download it from the YouTuber's GitHub or directly download it from the Google Drive link present in the data folder. (I can't upload the 50Mb dataset as the maximum dataset can be uploaded up to 25Mb). Also, remember that, to use zenml, your python version should be greater than 3.7 and less than 3.9. Therefore, in the below commands, we will install and use python 3.9 version.
 
 Once you are in the customer_satisfaction directory, run the below Ubuntu commands, one by one.
+______________________________________________________________________________________________
 
 sudo apt update
 
@@ -43,13 +44,13 @@ pip3 install zenml["server"]
 pip uninstall zenml
 
 pip install zenml["server"]
-
+______________________________________________________________________________________________
 Now, when you run till here, from the above command, it will give you an error as Example: $PATH:/home/abdur/.local/bin. So, you need to copy it and paste in the below command and run it.
 
 export PATH="$PATH:/home/abdur/.local/bin"
 
 pip install zenml["server"] --no-warn-script-location
-
+______________________________________________________________________________________________
 Now, from here the project starts. Run the below commands accordingly and see the outputs.
 
 zenml init
@@ -63,7 +64,7 @@ if _name_ == "_main_":
 ______________________________________________________________________________________________
 
 Now, run the below commands.
-
+______________________________________________________________________________________________
 python3.9 run_pipeline.py
 
 zenml up
@@ -83,12 +84,13 @@ zenml stack register mlflow_stack -a default -o default -d mlflow -e mlflow_trac
 zenml stack describe
 
 python3.9 run_pipeline.py
+______________________________________________________________________________________________
 
 Now, when the above command, you will get a file path, immediately below the above command. So, copy that, and paste in the below command and run it.
 
 mlflow ui --backend-store-uri "file path obtained from python3.9 run_pipeline.py command"
 
 ( Eg: mlflow ui --backend-store-uri "file:C:\Users\karth\AppData\Roaming\zenml\local_stores\c8cf9462-bc11-48dc-bece-2233ec4d3e76\mlruns" )
-
+______________________________________________________________________________________________
 
 
