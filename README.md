@@ -10,7 +10,7 @@ Now, create a folder in Local disk D as "customer_satisfaction" and paste that p
 
 For example, the path should be like this: cd /mnt/d/customer_satisfaction
 
-Now, copy or download all the files and folders from my repository in the Local D > customer_satisfaction. Also, for the dataset, you can either download it from the YouTuber's GitHub or directly download it from the Google Drive link present in the data folder. (I can't upload the 50Mb dataset as the maximum dataset can be uploaded up to 25Mb). Also, remember that, to use zenml, your Python version should be greater than 3.7 and less than 3.10. Therefore, in the below commands, we will run and install everything required for zenml, mlflow and streamlit and also, install and use the python 3.9 version.
+Now, copy or download all the files and folders from my repository and paste it in the Local D > customer_satisfaction folder. Also, for the dataset, you can either download it from the YouTuber's GitHub or directly download it from my Google Drive link present in the data folder. (I can't upload the 50Mb dataset as the maximum dataset can be uploaded up to 25Mb). Also, remember that, to use zenml, your Python version should be greater than 3.7 and less than 3.10. Therefore, in the below commands, we will run and install everything required for zenml, mlflow and streamlit and also, install and use the Python 3.9 version.
 
 Once you are in the customer_satisfaction directory (cd /mnt/d/customer_satisfaction), run the below Ubuntu commands, one by one.
 ______________________________________________________________________________________________
@@ -55,7 +55,7 @@ Installing collected packages: zenml
 Successfully installed zenml-0.52.0
 ______________________________________________________________________________________________
 
-Therefore, you need to copy it and paste it in the below command and run it.
+Therefore, you need to copy the path, paste it into the below command, and run it.
 
 export PATH="$PATH:/home/abdur/.local/bin"
 ______________________________________________________________________________________________
@@ -96,7 +96,7 @@ zenml stack describe
 ______________________________________________________________________________________________
 python3.9 run_pipeline.py
 
-Now, when run the above command, you will immediately get a file path below the above command. So, copy that, paste it into the below command, and run it.
+Now, when you run the above command, you will immediately get a file path below it. So, copy that, paste it into the below command, and run it.
 
 mlflow ui --backend-store-uri "file path obtained from python3.9 run_pipeline.py command"
 
