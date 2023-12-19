@@ -55,7 +55,7 @@ Installing collected packages: zenml
 Successfully installed zenml-0.52.0
 ______________________________________________________________________________________________
 
-Therefore, you need to copy the path, paste it into the below command, and run it.
+Therefore, change the below path (here, I got it as '/home/abdur/.local/bin') and run the below command.
 
 export PATH="$PATH:/home/abdur/.local/bin"
 ______________________________________________________________________________________________
