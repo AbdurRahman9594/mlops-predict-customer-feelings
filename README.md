@@ -45,7 +45,15 @@ pip uninstall zenml
 
 pip install zenml["server"]
 ______________________________________________________________________________________________
-Now, when you run till here, from the above command, it will give you an error as Example: $PATH:/home/abdur/.local/bin. So, you need to copy it and paste in the below command and run it.
+Now, when you run the above command, it will give you an error as below. 
+
+Installing collected packages: zenml
+  WARNING: The script zenml is installed in '/home/abdur/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed zenml-0.52.0
+______________________________________________________________________________________________
+
+So, you need to copy it and paste in the below command and run it.
 
 export PATH="$PATH:/home/abdur/.local/bin"
 
@@ -54,7 +62,7 @@ ________________________________________________________________________________
 Now, from here the project starts. Run the below commands accordingly and see the outputs.
 
 zenml init
-
+______________________________________________________________________________________________
 Now, you also need to change the data path in the run_pipeline.py and run_deployment.py files. So, change it to as below:
 ______________________________________________________________________________________________
 from pipelines.train_pipeline import train_pipeline
@@ -90,7 +98,20 @@ Now, when the above command, you will get a file path, immediately below the abo
 
 mlflow ui --backend-store-uri "file path obtained from python3.9 run_pipeline.py command"
 
-( Eg: mlflow ui --backend-store-uri "file:C:\Users\karth\AppData\Roaming\zenml\local_stores\c8cf9462-bc11-48dc-bece-2233ec4d3e76\mlruns" )
+( Eg: mlflow ui --backend-store-uri "file:C:\Users\abdur\AppData\Roaming\zenml\local_stores\c8cf9462-bc11-48dc-bece-2233ec4d3e76\mlruns" )
 ______________________________________________________________________________________________
+
+Now, run the below commands:
+
+python3.9 run_deployment.py --config deploy
+
+python3.9 run_deployment.py --config predict
+
+pip install streamlit
+
+streamlit run streamlit_app.py
+
+______________________________________________________________________________________________
+
 
 
