@@ -113,7 +113,7 @@ pip install streamlit
 
 streamlit run streamlit_app.py
 ______________________________________________________________________________________________
-Also, you can also visualize zenml and mlflow dashboards by running zenml up and the mlflow link obtained when you run the commands. 
+Also, you can also visualize zenml and mlflow dashboards by running "zenml up" and the mlflow link obtained when you run the commands. 
 
 That's all. Hope it works for you. 
 
